@@ -17,6 +17,8 @@ public class PoolingManager : MonoBehaviour
     private TMP_Text prefabCountText;
     [SerializeField]
     private TMP_InputField inputField;
+    public KeyCode spawnKey;
+    public KeyCode despawnKey;
     
     private ObjectPool<NearestNeighbour> pool;
     [HideInInspector]
@@ -74,7 +76,7 @@ public class PoolingManager : MonoBehaviour
         }
         else
         {
-            Debug.LogError("Invalid input");
+            Debug.LogError("Invalid input on input field");
         }
         
     }
@@ -105,7 +107,7 @@ public class PoolingManager : MonoBehaviour
         }
         else
         {
-            Debug.LogError("Invalid input");
+            Debug.LogError("Invalid input on input field");
         }
     }
 
@@ -115,5 +117,18 @@ public class PoolingManager : MonoBehaviour
     private void UpdatePrefabCount()
     {
         prefabCountText.text = activePrefabs.Count.ToString();
+    }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(spawnKey))
+        {
+            SpawnPrefabs();
+        }
+
+        if (Input.GetKeyDown(despawnKey))
+        {
+            DespawnPrefabs();
+        }
     }
 }

@@ -1592,6 +1592,8 @@ MonoBehaviour:
   initialPoolSize: 10
   prefabCountText: {fileID: 1269003521}
   inputField: {fileID: 824644823}
+  spawnKey: 115
+  despawnKey: 100
   activePrefabs: []
 --- !u!4 &1087309272
 Transform:
