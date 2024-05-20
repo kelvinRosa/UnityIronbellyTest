@@ -1589,7 +1589,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cubePrefab: {fileID: 8975464378286508659, guid: a41aea958386df543b1deb7ac03ff710, type: 3}
-  initialPoolSize: 900
+  initialPoolSize: 10
   prefabCountText: {fileID: 1269003521}
   inputField: {fileID: 824644823}
   activePrefabs: []

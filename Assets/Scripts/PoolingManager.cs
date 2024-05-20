@@ -41,7 +41,6 @@ public class PoolingManager : MonoBehaviour
     private void PreloadPool()
     {
         SpawnPrefabs(initialPoolSize);
-        DespawnPrefabs(initialPoolSize);
     }
 
     /// <summary>
