@@ -1,5 +1,7 @@
 # Ironbelly test.
 
+![alt running example](https://i.ibb.co/Ny9hNyY/capture.png)
+
 ### Pooling System
 Object Pooling is a common design pattern. I have experience using this pattern in almost all projects that have items that constantly need to be spawned and destroyed. It's a simple system, so I created a small  **ObjectPool** class that uses the Unity interface **IObjectPool**. The **ObjectPool** class has functions to create a pool of objects using a given key, get items from the pool, and release items back to the pool.
 
