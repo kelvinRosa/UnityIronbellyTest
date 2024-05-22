@@ -20,7 +20,7 @@ public class NearestNeighbour : MonoBehaviour
         lineRenderer.endColor = Color.red;
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
         if (Time.time - lastUpdateTime >= updateInterval)
         {
@@ -53,17 +53,24 @@ public class NearestNeighbour : MonoBehaviour
     private void FindNearestNeighbour()
     {
         float nearestDistance = float.MaxValue;
+        float thresholdDistance = 10.0f; // Adjust threshold as needed
         Vector3 currentPosition = transform.position;
 
         foreach (var neighbour in PoolingManager.Instance.activePrefabs)
         {
             if (neighbour != this)
             {
-                float distance = Vector3.SqrMagnitude(currentPosition - neighbour.transform.position); // Using SqrMagnitude for better performance
+                float distance = Vector3.SqrMagnitude(currentPosition - neighbour.transform.position);
                 if (distance < nearestDistance)
                 {
                     nearestDistance = distance;
                     nearest = neighbour;
+
+                    // Early termination if distance is below threshold
+                    if (distance < thresholdDistance)
+                    {
+                        break;
+                    }
                 }
             }
         }
