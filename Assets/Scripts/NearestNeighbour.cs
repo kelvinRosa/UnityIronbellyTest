@@ -5,7 +5,7 @@ using UnityEngine;
 /// </summary>
 public class NearestNeighbour : MonoBehaviour
 {
-    private float updateInterval = 0.4f;
+    private float updateInterval = 0.2f;
     private float lastUpdateTime = 0f;
     private NearestNeighbour nearest = null;
     [SerializeField]
@@ -18,7 +18,7 @@ public class NearestNeighbour : MonoBehaviour
         lineRenderer.endWidth = 0.05f;
     }
 
-    private void FixedUpdate()
+    private void Update()
     {
         if (Time.time - lastUpdateTime >= updateInterval)
         {
