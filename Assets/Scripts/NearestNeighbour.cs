@@ -51,7 +51,7 @@ public class NearestNeighbour : MonoBehaviour
     private void FindNearestNeighbour()
     {
         float nearestDistance = float.MaxValue;
-        float thresholdDistance = 10.0f; // Adjust threshold as needed
+        float thresholdDistance = 5.0f; // Adjust threshold as needed
         Vector3 currentPosition = transform.position;
 
         foreach (var neighbour in PoolingManager.Instance.activePrefabs)
