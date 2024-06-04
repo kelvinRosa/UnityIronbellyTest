@@ -1,6 +1,5 @@
 # Ironbelly test.
 
-![alt running example](https://i.ibb.co/CvHZyr6/Captura-de-tela-2024-05-23-125114.png)
 ![alt running example game](https://i.ibb.co/n1kZXC2/iron.png)
 
 ### Pooling System
