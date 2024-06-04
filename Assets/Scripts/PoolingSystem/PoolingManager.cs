@@ -1,38 +1,27 @@
-using System;
 using UnityEngine;
-using UnityEngine.UI;
 using System.Collections.Generic;
 using TMPro;
-using Random = UnityEngine.Random;
-
 public class PoolingManager : MonoBehaviour
 {
-    public static PoolingManager Instance;
-    
     [SerializeField]
-    private GameObject cubePrefab;
+    private PoolingSettingsSO poolingSettings;
     [SerializeField]
-    private int initialPoolSize = 10;
-    [SerializeField]
+    private InputSettingsSO inputSettings;
+    [SerializeField][Header("UI Elements")]
     private TMP_Text prefabCountText;
     [SerializeField]
     private TMP_InputField inputField;
-    public KeyCode spawnKey;
-    public KeyCode despawnKey;
     
-    private ObjectPool<NearestNeighbour> pool;
+    private ObjectPool<NearesNeighborComponent> pool;
+    
     [HideInInspector]
-    public List<NearestNeighbour> activePrefabs = new List<NearestNeighbour>();
+    public List<NearesNeighborComponent> activePrefabs = new List<NearesNeighborComponent>();
 
-    private void Awake()
-    {
-        Instance = this;
-    }
     
     private void Start()
     {
-        pool = new ObjectPool<NearestNeighbour>();
-        pool.CreatePool("CubePool", cubePrefab.GetComponent<NearestNeighbour>(), initialPoolSize, 100);
+        pool = new ObjectPool<NearesNeighborComponent>();
+        pool.CreatePool("CubePool", poolingSettings.prefab.GetComponent<NearesNeighborComponent>(), poolingSettings.startPoolSize, 10000);
         UpdatePrefabCount();
         PreloadPool();
     }
@@ -42,9 +31,9 @@ public class PoolingManager : MonoBehaviour
     /// </summary>
     private void PreloadPool()
     {
-        SpawnPrefabs(initialPoolSize);
+        SpawnPrefabs(poolingSettings.startPoolSize);
     }
-
+    
     /// <summary>
     /// Spawn prefabs based on the amount
     /// </summary>
@@ -60,8 +49,14 @@ public class PoolingManager : MonoBehaviour
                 Random.Range(-10f, 10f),
                 Random.Range(-10f, 10f)
             );
+            //prefab.AddToNearestNeighbourManager();
             activePrefabs.Add(prefab);
         }
+        
+        // m_points = new NativeArray<float3>(activePrefabs.Count, Allocator.Persistent);
+        // // Create a container that accelerates querying for neighbours
+        // m_container = new KnnContainer(m_points, false, Allocator.Persistent);
+        
         UpdatePrefabCount();
     }
     
@@ -89,7 +84,7 @@ public class PoolingManager : MonoBehaviour
     {
         for (int i = 0; i < count && activePrefabs.Count > 0; i++)
         {
-            NearestNeighbour prefab = activePrefabs[activePrefabs.Count - 1];
+	        NearesNeighborComponent prefab = activePrefabs[activePrefabs.Count - 1];
             activePrefabs.RemoveAt(activePrefabs.Count - 1);
             pool.ReturnToPool("CubePool", prefab);
         }
@@ -118,15 +113,15 @@ public class PoolingManager : MonoBehaviour
     {
         prefabCountText.text = activePrefabs.Count.ToString();
     }
-
+    
     private void Update()
     {
-        if (Input.GetKeyDown(spawnKey))
+        if (Input.GetKeyDown(inputSettings.spawnKey))
         {
             SpawnPrefabs();
         }
 
-        if (Input.GetKeyDown(despawnKey))
+        if (Input.GetKeyDown(inputSettings.despawnKey))
         {
             DespawnPrefabs();
         }

@@ -831,6 +831,39 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 383502217}
   m_CullTransparentMesh: 1
+--- !u!1 &398462431
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 398462432}
+  m_Layer: 0
+  m_Name: GameSystems
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &398462432
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 398462431}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1087309272}
+  - {fileID: 1332032456}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &418254399
 GameObject:
   m_ObjectHideFlags: 0
@@ -1570,7 +1603,7 @@ GameObject:
   - component: {fileID: 1087309272}
   - component: {fileID: 1087309271}
   m_Layer: 0
-  m_Name: PoolingManager
+  m_Name: Pooling Manager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1588,12 +1621,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e4d1573cbd968044b449ec37967c4f3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cubePrefab: {fileID: 8975464378286508659, guid: a41aea958386df543b1deb7ac03ff710, type: 3}
-  initialPoolSize: 10
+  poolingSettings: {fileID: 11400000, guid: 12012ee9237f8ff4b9c26f618ba20d8d, type: 2}
+  inputSettings: {fileID: 11400000, guid: 6c4fa2e7e92d5fb44ae2b8fc1d0d271f, type: 2}
   prefabCountText: {fileID: 1269003521}
   inputField: {fileID: 824644823}
-  spawnKey: 115
-  despawnKey: 100
   activePrefabs: []
 --- !u!4 &1087309272
 Transform:
@@ -1603,12 +1634,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1087309270}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 398462432}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1197009589
 GameObject:
@@ -1882,6 +1913,52 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1269003519}
   m_CullTransparentMesh: 1
+--- !u!1 &1332032455
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1332032456}
+  - component: {fileID: 1332032457}
+  m_Layer: 0
+  m_Name: Nearest Neighbor System
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1332032456
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1332032455}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 398462432}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1332032457
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1332032455}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d216e9e25fbbe8f4ebdb526f8ddab887, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nearestNeighborSettings: {fileID: 11400000, guid: c8e8ffdf2ecb6f044ba48e31e82668c4, type: 2}
+  poolingSettings: {fileID: 11400000, guid: 12012ee9237f8ff4b9c26f618ba20d8d, type: 2}
 --- !u!1 &1958758693
 GameObject:
   m_ObjectHideFlags: 0
@@ -2157,6 +2234,6 @@ SceneRoots:
   m_Roots:
   - {fileID: 963194228}
   - {fileID: 705507995}
-  - {fileID: 1087309272}
   - {fileID: 36562180}
   - {fileID: 227985962}
+  - {fileID: 398462432}
